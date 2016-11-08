@@ -14,7 +14,7 @@ namespace Sockets.Plugin.Abstractions
         /// <param name="port">The port to listen on.</param>
         /// <param name="listenOn">The <code>CommsInterface</code> to listen on. If unspecified, all interfaces will be bound.</param>
         /// <returns></returns>
-        Task StartListeningAsync(int port, ICommsInterface listenOn);
+        Task StartListeningAsync(int port, bool isReusable, ICommsInterface listenOn);
 
         /// <summary>
         ///     Unbinds a bound <code>UdpSocketReceiver</code>. Should not be called if the <code>UdpSocketReceiver</code> has not

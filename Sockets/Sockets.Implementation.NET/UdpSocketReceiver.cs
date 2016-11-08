@@ -24,7 +24,7 @@ namespace Sockets.Plugin
         /// <param name="port">The port to listen on. If '0', selection is delegated to the operating system.</param>        
         /// <param name="listenOn">The <code>CommsInterface</code> to listen on. If unspecified, all interfaces will be bound.</param>
         /// <returns></returns>
-        public Task StartListeningAsync(int port = 0, ICommsInterface listenOn = null)
+        public Task StartListeningAsync(int port = 0, bool isReusable = false, ICommsInterface listenOn = null)
         {
             if (listenOn != null && !listenOn.IsUsable)
                 throw new InvalidOperationException("Cannot listen on an unusable interface. Check the IsUsable property before attemping to bind.");
@@ -37,10 +37,14 @@ namespace Sockets.Plugin
 
                     _messageCanceller = new CancellationTokenSource();
 
-                    _backingUdpClient = new UdpClient(ep)
+                    _backingUdpClient = new UdpClient()
                     {
                         EnableBroadcast = true
                     };
+
+                    _backingUdpClient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+                    _backingUdpClient.Client.Bind(ep);
+
                     ProtectAgainstICMPUnreachable(_backingUdpClient);
 
                     RunMessageReceiver(_messageCanceller.Token);

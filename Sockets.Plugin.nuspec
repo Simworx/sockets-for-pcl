@@ -2,46 +2,20 @@
 
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata minClientVersion="2.8.1">
-    <id>rda.SocketsForPCL</id>
-    <version>2.0.2</version>
+    <id>simworx.SocketsForPCL</id>
+    <version>2.0.3</version>
     <title>Sockets Plugin for Xamarin and Windows (PCL)</title>
-    <authors>Ryan Davis</authors>
-    <owners>Ryan Davis</owners>
+    <authors>Simworx</authors>
+    <owners>Simworx</owners>
     <licenseUrl>https://raw.githubusercontent.com/rdavisau/sockets-for-pcl/master/LICENSE.md</licenseUrl>
-    <projectUrl>https://github.com/rdavisau/sockets-for-pcl</projectUrl>
+    <projectUrl>https://github.com/simworx/sockets-for-pcl</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <copyright>2016 Ryan Davis</copyright>
+    <copyright>2016 Simworx</copyright>
     <iconUrl>https://raw.githubusercontent.com/rdavisau/sockets-for-pcl/master/_meta/icon/icon.png</iconUrl>
     <releaseNotes>
-2.0.2 (2016-06-30)
+2.0.3 (2016-08-11)
 
-Known Issues: 
-
-- A `SocketException` class has been added, allowing socket-related exceptions to be caught from PCL code. In this release, this works for WinRT/UWP platforms only. 
-
-Deprecations:
-
-- Support for the iOS "Classic" API, MacOS "Classic" and MonoMac (open source) platforms has been dropped.
-
-Features: 
-
-- It is now possible to retrieve the `ICommsInterface` that a `TcpSocketClient` is connected via. Thanks @fubar-coder
-- Auto-properties have been replaced with proper events across all classes. Thanks @Waty
-- `TcpSocketClient`'s `ConnectAsync` method optionally takes a `CancellationToken` to support client-invoked cancellation and scenarios like timeout. Thanks @SparkStream
-- You may now specify a service name rather than port when connecting with a `TcpSocketClient`. Thanks @SparkStream
-- For those that need it, you can access the underlying .NET or WinRT/UWP socket instance from native (non-PCL) projects. Thanks @SparkStream
-- `UdpSocketClient` can now receive response packets. This simplifies scenarios where you don't need to listen for new packets, but do need to receive response packets. Thanks @SatoshiARA
-- All the Udp socket classes now include a `Send-` overload that allows you to specify the number of bytes to be read from the input. This can avoid the need to duplicate a buffer when working with streams. Thanks @jasells
-
-Bugfixes: 
-
-- Fixed `InvalidCastException` being thrown by `TcpSocketListener.Dispose()`. Thanks @Waty
-- Fix for a rare issue where the Udp classes could throw an exception after receiving an ICMP unreachable packet in certain cases
-
-Other:
-
-- sockets-for-pcl can now also be installed via the Xamarin Component Store. Thanks @mattleibow
-- special thanks to @vbisbest for helping work through issues in the prereleases
+Added option for socket reuse
 
     </releaseNotes>
     <description>
@@ -68,42 +42,6 @@ Other:
     <file src="Sockets\Sockets.Plugin.Abstractions\bin\Release\Sockets.Plugin.Abstractions.pdb"
           target="lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Sockets.Plugin.Abstractions.pdb" />
 
-    <!--Win Phone Silverlight-->
-    <file src="Sockets\Sockets.Plugin.WindowsPhone8\bin\Release\Sockets.Plugin.dll" target="lib\wp8\Sockets.Plugin.dll" />
-    <file src="Sockets\Sockets.Plugin.WindowsPhone8\bin\Release\Sockets.Plugin.xml" target="lib\wp8\Sockets.Plugin.xml" />
-    <file src="Sockets\Sockets.Plugin.WindowsPhone8\bin\Release\Sockets.Plugin.pdb" target="lib\wp8\Sockets.Plugin.pdb" />
-    <file src="Sockets\Sockets.Plugin.Abstractions\bin\Release\Sockets.Plugin.Abstractions.dll"
-          target="lib\wp8\Sockets.Plugin.Abstractions.dll" />
-    <file src="Sockets\Sockets.Plugin.Abstractions\bin\Release\Sockets.Plugin.Abstractions.xml"
-          target="lib\wp8\Sockets.Plugin.Abstractions.xml" />
-    <file src="Sockets\Sockets.Plugin.Abstractions\bin\Release\Sockets.Plugin.Abstractions.pdb"
-          target="lib\wp8\Sockets.Plugin.Abstractions.pdb" />
-
-    <!--Win Phone 81-->
-    <file src="Sockets\Sockets.Plugin.WindowsPhone81\bin\Release\Sockets.Plugin.dll"
-          target="lib\wpa81\Sockets.Plugin.dll" />
-    <file src="Sockets\Sockets.Plugin.WindowsPhone81\bin\Release\Sockets.Plugin.xml"
-          target="lib\wpa81\Sockets.Plugin.xml" />
-    <file src="Sockets\Sockets.Plugin.WindowsPhone81\bin\Release\Sockets.Plugin.pdb"
-          target="lib\wpa81\Sockets.Plugin.pdb" />
-    <file src="Sockets\Sockets.Plugin.Abstractions\bin\Release\Sockets.Plugin.Abstractions.dll"
-          target="lib\wpa81\Sockets.Plugin.Abstractions.dll" />
-    <file src="Sockets\Sockets.Plugin.Abstractions\bin\Release\Sockets.Plugin.Abstractions.xml"
-          target="lib\wpa81\Sockets.Plugin.Abstractions.xml" />
-    <file src="Sockets\Sockets.Plugin.Abstractions\bin\Release\Sockets.Plugin.Abstractions.pdb"
-          target="lib\wpa81\Sockets.Plugin.Abstractions.pdb" />
-
-    <!--WinStore-->
-    <file src="Sockets\Sockets.Plugin.WindowsStore\bin\Release\Sockets.Plugin.dll" target="lib\win8\Sockets.Plugin.dll" />
-    <file src="Sockets\Sockets.Plugin.WindowsStore\bin\Release\Sockets.Plugin.xml" target="lib\win8\Sockets.Plugin.xml" />
-    <file src="Sockets\Sockets.Plugin.WindowsStore\bin\Release\Sockets.Plugin.pdb" target="lib\win8\Sockets.Plugin.pdb" />
-    <file src="Sockets\Sockets.Plugin.Abstractions\bin\Release\Sockets.Plugin.Abstractions.dll"
-          target="lib\win8\Sockets.Plugin.Abstractions.dll" />
-    <file src="Sockets\Sockets.Plugin.Abstractions\bin\Release\Sockets.Plugin.Abstractions.xml"
-          target="lib\win8\Sockets.Plugin.Abstractions.xml" />
-    <file src="Sockets\Sockets.Plugin.Abstractions\bin\Release\Sockets.Plugin.Abstractions.pdb"
-          target="lib\win8\Sockets.Plugin.Abstractions.pdb" />
-
     <!--Xamarin.Android-->
     <file src="Sockets\Sockets.Plugin.Android\bin\Release\Sockets.Plugin.dll"
           target="lib\MonoAndroid10\Sockets.Plugin.dll" />
@@ -118,26 +56,6 @@ Other:
     <file src="Sockets\Sockets.Plugin.Abstractions\bin\Release\Sockets.Plugin.Abstractions.pdb"
           target="lib\MonoAndroid10\Sockets.Plugin.Abstractions.pdb" />
 
-    <!--Xamarin.iOS Unified-->
-    <file src="Sockets\Sockets.Plugin.iOSUnified\bin\iPhone\Release\Sockets.Plugin.dll"
-          target="lib\Xamarin.iOS10\Sockets.Plugin.dll" />
-    <file src="Sockets\Sockets.Plugin.iOSUnified\bin\iPhone\Release\Sockets.Plugin.xml"
-          target="lib\Xamarin.iOS10\Sockets.Plugin.xml" />
-    <file src="Sockets\Sockets.Plugin.Abstractions\bin\Release\Sockets.Plugin.Abstractions.dll"
-          target="lib\Xamarin.iOS10\Sockets.Plugin.Abstractions.dll" />
-    <file src="Sockets\Sockets.Plugin.Abstractions\bin\Release\Sockets.Plugin.Abstractions.xml"
-          target="lib\Xamarin.iOS10\Sockets.Plugin.Abstractions.xml" />
-
-    <!--Xamarin.Mac Unified-->
-    <file src="Sockets\Sockets.Plugin.MacUnified\bin\MacUnified\Release\Sockets.Plugin.dll"
-          target="lib\Xamarin.Mac\Sockets.Plugin.dll" />
-    <file src="Sockets\Sockets.Plugin.MacUnified\bin\MacUnified\Release\Sockets.Plugin.xml"
-          target="lib\Xamarin.Mac\Sockets.Plugin.xml" />
-    <file src="Sockets\Sockets.Plugin.Abstractions\bin\Release\Sockets.Plugin.Abstractions.dll"
-          target="lib\Xamarin.Mac\Sockets.Plugin.Abstractions.dll" />
-    <file src="Sockets\Sockets.Plugin.Abstractions\bin\Release\Sockets.Plugin.Abstractions.xml"
-          target="lib\Xamarin.Mac\Sockets.Plugin.Abstractions.xml" />
-
     <!--Windows Desktop-->
     <file src="Sockets\Sockets.Plugin.WindowsDesktop\bin\Release\Sockets.Plugin.dll"
           target="lib\net45\Sockets.Plugin.dll" />
@@ -151,10 +69,6 @@ Other:
           target="lib\net45\Sockets.Plugin.Abstractions.xml" />
     <file src="Sockets\Sockets.Plugin.Abstractions\bin\Release\Sockets.Plugin.Abstractions.pdb"
           target="lib\net45\Sockets.Plugin.Abstractions.pdb" />
-
-    <!-- LINQPad Samples -->
-    <file src="Sockets\linqpad-samples\**"
-          target="linqpad-samples"/>
 
   </files>
 </package>
