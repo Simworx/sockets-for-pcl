@@ -105,6 +105,11 @@ namespace Sockets.Plugin
         }
 
         /// <summary>
+        ///     Bytes available to read
+        /// </summary>
+        public int Available { get { throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); } }
+
+        /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
         public void Dispose()

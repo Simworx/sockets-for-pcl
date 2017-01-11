@@ -221,6 +221,11 @@ namespace Sockets.Plugin
         }
 
         /// <summary>
+        ///     Bytes available to read
+        /// </summary>
+        public int Available { get { return _backingTcpClient == null ? 0 : _backingTcpClient.Available; } }
+
+        /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
         public void Dispose()

@@ -62,6 +62,11 @@ namespace Sockets.Plugin.Abstractions
         ///     The port of the remote endpoint to which the <code>TcpSocketClient</code> is currently connected.
         /// </summary>
         int RemotePort { get; }
+
+        /// <summary>
+        ///     Bytes available to read
+        /// </summary>
+        int Available { get; }
     }
 
     public interface IExposeBackingSocket
