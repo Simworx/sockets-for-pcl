@@ -34,6 +34,12 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\Sockets.Plugin.XML</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>SimworxCodeCertVS.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
     <ProjectReference Include="..\Sockets.Plugin.Abstractions\Sockets.Plugin.Abstractions.csproj">
@@ -51,6 +57,9 @@
     <Compile Include="UdpSocketClient.cs" />
     <Compile Include="UdpSocketMulticastClient.cs" />
     <Compile Include="UdpSocketReceiver.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SimworxCodeCertVS.pfx" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

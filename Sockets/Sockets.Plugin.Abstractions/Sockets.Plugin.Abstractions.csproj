@@ -34,6 +34,12 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\Sockets.Plugin.Abstractions.XML</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>SimworxCodeCertVS.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Exceptions\SocketException.cs" />
     <Compile Include="Extensions\TcpSocketClientExtensions.cs" />
@@ -48,6 +54,9 @@
     <Compile Include="EventArgs\TcpSocketListenerConnectEventArgs.cs" />
     <Compile Include="EventArgs\UdpSocketMessageReceivedEventArgs.cs" />
     <Compile Include="Resources\ServiceNames.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SimworxCodeCertVS.pfx" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
