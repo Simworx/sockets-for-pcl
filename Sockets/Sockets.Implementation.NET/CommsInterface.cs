@@ -113,7 +113,8 @@ namespace Sockets.Plugin
                 IpAddress = ip != null ? ip.Address.ToString() : null,
                 GatewayAddress = gateway,
                 BroadcastAddress = broadcast,
-                ConnectionStatus = nativeInterface.OperationalStatus.ToCommsInterfaceStatus(),
+                //This crashes on android 7. Replace in the future if this is fixed?
+                ConnectionStatus = CommsInterfaceStatus.Unknown, //nativeInterface.OperationalStatus.ToCommsInterfaceStatus(),
                 NativeInterface = nativeInterface
             };
         }
