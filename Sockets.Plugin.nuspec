@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata minClientVersion="2.8.1">
     <id>simworx.SocketsForPCL</id>
-    <version>2.0.8</version>
+    <version>2.0.9</version>
     <title>Sockets Plugin for Xamarin and Windows (PCL)</title>
     <authors>Simworx</authors>
     <owners>Simworx</owners>
@@ -13,9 +13,9 @@
     <copyright>2017 Simworx</copyright>
     <iconUrl>https://raw.githubusercontent.com/rdavisau/sockets-for-pcl/master/_meta/icon/icon.png</iconUrl>
     <releaseNotes>
-2.0.4 (2017-01-11)
+      2.0.9 (2017-01-11)
 
-Add Available property fpr tcp client
+      Fixed interrupted exception from WaitForConnections. Does not break waiting loop.
 
     </releaseNotes>
     <description>

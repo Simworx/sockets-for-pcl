@@ -110,12 +110,36 @@ namespace Sockets.Plugin
             {
                 while (!cancelToken.IsCancellationRequested)
                 {
-                    var nativeClient = await Task.Run(() => _backingTcpListener.AcceptTcpClient(), cancelToken);
-                    var wrappedClient = new TcpSocketClient(nativeClient, _bufferSize);
+                    try
+                    {
+                        var nativeClient = await Task.Run(() =>
+                        {
+                            try
+                            {
+                                return _backingTcpListener.AcceptTcpClient();
+                            }
+                            catch (Exception)
+                            {
+                                // Can get interrupted exception so need to handle
+                                return null;
+                            }
+                        }, cancelToken);
 
-                    var eventArgs = new TcpSocketListenerConnectEventArgs(wrappedClient);
-                    if (ConnectionReceived != null)
-                        ConnectionReceived(this, eventArgs);
+                        if (nativeClient == null)
+                        {
+                            continue;
+                        }
+
+                        var wrappedClient = new TcpSocketClient(nativeClient, _bufferSize);
+
+                        var eventArgs = new TcpSocketListenerConnectEventArgs(wrappedClient);
+                        if (ConnectionReceived != null)
+                            ConnectionReceived(this, eventArgs);
+                    }
+                    catch (Exception)
+                    {
+                        // Dont allow the loop to break
+                    }
                 }
             },
                 cancelToken,
